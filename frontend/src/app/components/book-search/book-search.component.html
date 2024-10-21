@@ -1,0 +1,30 @@
+<div class="search-container">
+    <h2>Buscar Libro</h2>
+  
+    <input
+      type="text"
+      [(ngModel)]="title"
+      placeholder="Introduce el título del libro"
+      class="search-input"
+    />
+  
+    <button (click)="searchBook()" class="search-btn">
+      Buscar
+    </button>
+  </div>
+  
+  <!-- Mostrar resultados -->
+  <div *ngIf="publications.length > 0" class="result-container">
+    <h3>Resultados de búsqueda:</h3>
+    <ul>
+      <li *ngFor="let publication of publications">
+        <strong>{{ publication.title }}</strong> - {{ publication.author }}
+        <p>{{ publication.description }}</p>
+      </li>
+    </ul>
+  </div>
+  
+  <!-- Si no hay resultados -->
+  <div *ngIf="publications.length === 0 && title !== ''">
+    <p>No se encontraron libros con ese título.</p>
+  </div>
